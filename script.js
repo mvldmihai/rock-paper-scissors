@@ -31,26 +31,34 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (i = 0; i < 5; i++) {
-        let playerSelection = prompt("Enter your choice: ").toLowerCase();
-        let round = playRound(playerSelection, getComputerChoice());
-        console.log(round);
-        if (round.includes("Win")) {
-            playerScore++;
-        } else if (round.includes("Lose")) {
-            computerScore++;
-        }
-    }
-    if (playerScore > computerScore) {
-        console.log(`The player wins with a score of ${playerScore} against ${computerScore}`);
-    } else if (computerScore > playerScore) {
-        console.log(`The computer wins with a score of ${computerScore} against ${playerScore}`);
-    } else {
-        console.log(`Well well well, it seems we have a tie. The score is ${playerScore} and ${computerScore}`);
-    }
-}
+// function game() {
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     for (i = 0; i < 5; i++) {
+//         let playerSelection = prompt("Enter your choice: ").toLowerCase();
+//         let round = playRound(playerSelection, getComputerChoice());
+//         console.log(round);
+//         if (round.includes("Win")) {
+//             playerScore++;
+//         } else if (round.includes("Lose")) {
+//             computerScore++;
+//         }
+//     }
+//     if (playerScore > computerScore) {
+//         console.log(`The player wins with a score of ${playerScore} against ${computerScore}`);
+//     } else if (computerScore > playerScore) {
+//         console.log(`The computer wins with a score of ${computerScore} against ${playerScore}`);
+//     } else {
+//         console.log(`Well well well, it seems we have a tie. The score is ${playerScore} and ${computerScore}`);
+//     }
+// }
 
-game();
+// game();
+
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
+rock.textContent = "Rock";
+paper.textContent = "Paper";
+scissors.textContent = "Scissors";
