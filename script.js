@@ -54,14 +54,25 @@ function playRound(playerSelection, computerSelection) {
 // }
 
 // game();
+const rockButton = document.createElement('button');
+rockButton.textContent = "Rock";
+rockButton.classList.add("rock");
+document.body.appendChild(rockButton);
+
+const paperButton = document.createElement('button');
+paperButton.textContent = "Paper";
+paperButton.classList.add("paper");
+document.body.appendChild(paperButton);
+
+const scissorsButton = document.createElement('button');
+scissorsButton.textContent = "Scissors";
+scissorsButton.classList.add("scissors");
+document.body.appendChild(scissorsButton);
 
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 
-rock.textContent = "Rock";
-paper.textContent = "Paper";
-scissors.textContent = "Scissors";
 
 rock.addEventListener('click', (e) => {
     let round = playRound('rock', getComputerChoice());
