@@ -43,32 +43,29 @@ function checkRoundWinner(round) {
     }
 }
 
-function updateRoundNumber() {
-    return currentRound++;
+function updateRound(playerScore, computerScore) {
+    scoreDiv.textContent = `Player: ${playerScore} | Computer: ${computerScore}`
 }
 
-function updateRound(currentRound, playerScore, computerScore) {
-    scoreDiv.textContent = `Round: ${currentRound} | Player: ${playerScore} 
-| Computer: ${computerScore}`
-}
-
-function showWinner(currentRound, playerScore, computerScore) {
-    if (currentRound > 4) {
-        if (playerScore > computerScore) {
-            return scoreDiv.textContent = `Player wins with a score of ${playerScore} agaist 
-            ${computerScore}`
-        } else if (computerScore > playerScore) {
-            return scoreDiv.textContent = `Computer wins with a score of ${computerScore} against 
-            ${playerScore}`
-        } else {
-            return scoreDiv.textContent = `It seems we have a tie 
-            ${playerScore} and ${computerScore}`
+function showWinner(playerScore, computerScore) {
+        if (playerScore === 5) {
+            return scoreDiv.textContent = `Player wins with a score of 
+            ${playerScore} agaist ${computerScore}. Reload to play again.`
+        } else if (computerScore === 5) {
+            return scoreDiv.textContent = `Computer wins with a score of 
+            ${computerScore} against ${playerScore}. Reload to play again.`
         }
+}
+
+function checkScore (playerScore, computerScore) {
+    if (playerScore === 5 || computerScore === 5) {
+       document.querySelector('.rock').disabled = true;
+       document.querySelector('.paper').disabled = true;
+       document.querySelector('.scissors').disabled = true;
     }
 }
 
 let round = 'We play 5 rounds. Press any button to begin playing!';
-let currentRound = 0;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -92,8 +89,7 @@ div.textContent = round;
 document.body.appendChild(div);
 
 const scoreDiv = document.createElement('div');
-scoreDiv.textContent = `Round: ${currentRound} | Player: ${playerScore} 
-| Computer: ${computerScore}`
+scoreDiv.textContent = `Player: ${playerScore} | Computer: ${computerScore}`
 document.body.appendChild(scoreDiv);
 
 const rock = document.querySelector('.rock');
@@ -104,9 +100,9 @@ rock.addEventListener('click', (e) => {
     round = playRound('rock', getComputerChoice());
     showRoundResult(round);
     checkRoundWinner(round);
-    updateRoundNumber();
-    updateRound(currentRound, playerScore, computerScore);
-    showWinner(currentRound, playerScore, computerScore);
+    updateRound(playerScore, computerScore);
+    showWinner(playerScore, computerScore);
+    checkScore(playerScore, computerScore);
     e.stopPropagation();
 })
 
@@ -114,9 +110,9 @@ paper.addEventListener('click', (e) => {
     round = playRound('paper', getComputerChoice());
     showRoundResult(round);
     checkRoundWinner(round);
-    updateRoundNumber();
-    updateRound(currentRound, playerScore, computerScore);
-    showWinner(currentRound, playerScore, computerScore);
+    updateRound(playerScore, computerScore);
+    showWinner(playerScore, computerScore);
+    checkScore(playerScore, computerScore);
     e.stopPropagation();
 })
 
@@ -124,8 +120,8 @@ scissors.addEventListener('click', (e) => {
     round = playRound('scissors', getComputerChoice());
     showRoundResult(round);
     checkRoundWinner(round);
-    updateRoundNumber();
-    updateRound(currentRound, playerScore, computerScore);
-    showWinner(currentRound, playerScore, computerScore);
+    updateRound(playerScore, computerScore);
+    showWinner(playerScore, computerScore);
+    checkScore(playerScore, computerScore);
     e.stopPropagation();
 })
