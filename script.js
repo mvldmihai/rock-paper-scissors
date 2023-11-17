@@ -69,25 +69,35 @@ scissorsButton.textContent = "Scissors";
 scissorsButton.classList.add("scissors");
 document.body.appendChild(scissorsButton);
 
+const div = document.createElement('div');
+document.body.appendChild(div);
+
+function showRound(text) {
+    div.textContent = text;
+}
+
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
+let round = '';
 
 
 rock.addEventListener('click', (e) => {
-    let round = playRound('rock', getComputerChoice());
-    console.log(round);
     e.stopPropagation();
+    round = playRound('rock', getComputerChoice());
+    showRound(round);
 })
 
 paper.addEventListener('click', (e) => {
-    let round = playRound('paper', getComputerChoice());
-    console.log(round);
     e.stopPropagation();
+    round = playRound('paper', getComputerChoice());
+    showRound(round);
 })
 
 scissors.addEventListener('click', (e) => {
-    let round = playRound('scissors', getComputerChoice());
-    console.log(round);
     e.stopPropagation();
+    round = playRound('scissors', getComputerChoice());
+    showRound(round);
 })
+
+
