@@ -31,29 +31,15 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// function game() {
-//     let playerScore = 0;
-//     let computerScore = 0;
-//     for (i = 0; i < 5; i++) {
-//         let playerSelection = prompt("Enter your choice: ").toLowerCase();
-//         let round = playRound(playerSelection, getComputerChoice());
-//         console.log(round);
-//         if (round.includes("Win")) {
-//             playerScore++;
-//         } else if (round.includes("Lose")) {
-//             computerScore++;
-//         }
-//     }
-//     if (playerScore > computerScore) {
-//         console.log(`The player wins with a score of ${playerScore} against ${computerScore}`);
-//     } else if (computerScore > playerScore) {
-//         console.log(`The computer wins with a score of ${computerScore} against ${playerScore}`);
-//     } else {
-//         console.log(`Well well well, it seems we have a tie. The score is ${playerScore} and ${computerScore}`);
-//     }
-// }
+function showRoundResult(text) {
+    div.textContent = text;
+}
 
-// game();
+let round = '';
+let currentRound = 0;
+let playerScore = 0;
+let computerScore = 0;
+
 const rockButton = document.createElement('button');
 rockButton.textContent = "Rock";
 rockButton.classList.add("rock");
@@ -72,32 +58,36 @@ document.body.appendChild(scissorsButton);
 const div = document.createElement('div');
 document.body.appendChild(div);
 
-function showRound(text) {
-    div.textContent = text;
-}
+const scoreDiv = document.createElement('div');
+scoreDiv.textContent = `Round ${currentRound} | Player: ${playerScore} 
+| Computer: ${computerScore}`
+document.body.appendChild(scoreDiv);
 
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
-let round = '';
 
 
 rock.addEventListener('click', (e) => {
-    e.stopPropagation();
     round = playRound('rock', getComputerChoice());
-    showRound(round);
+    showRoundResult(round);
+    currentRound++;
+    console.log(currentRound);
+    e.stopPropagation();
 })
 
 paper.addEventListener('click', (e) => {
-    e.stopPropagation();
     round = playRound('paper', getComputerChoice());
-    showRound(round);
+    showRoundResult(round);
+    currentRound++;
+    console.log(currentRound);
+    e.stopPropagation();
 })
 
 scissors.addEventListener('click', (e) => {
-    e.stopPropagation();
     round = playRound('scissors', getComputerChoice());
-    showRound(round);
+    showRoundResult(round);
+    currentRound++;
+    console.log(currentRound);
+    e.stopPropagation();
 })
-
-
